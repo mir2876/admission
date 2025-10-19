@@ -6,7 +6,9 @@ import pickle
 # === Load model ===
 #with open("D:/Bootcamp ML & AI/admission_app/hasil.pkl", "rb") as file:
  #   model = pickle.load(file)
-model = joblib.load("D:/Bootcamp ML & AI/admission_app/hasil.pkl")
+import os
+model = joblib.load(os.path.join(os.path.dirname(__file__), "hasil.pkl"))
+
 # === Min-Max values dari data sebelum scaling ===
 feature_min = {
     'motiv_letter_strength': 1,
@@ -46,10 +48,6 @@ st.markdown("""
 # === Sidebar Navigasi ===
 st.sidebar.title("📚 Menu")
 menu = st.sidebar.radio("Pilih:", ["Tentang", "Prediksi"])
-
-# === Load Model dan Scaler ===
-#model = joblib.load("model_lasso.pkl")  # ganti sesuai nama model kamu
-#scaler = joblib.load("scaler.pkl")      # ganti sesuai nama scaler kamu
 
 # === Halaman 1: Tentang Aplikasi ===
 if menu == "Tentang":
